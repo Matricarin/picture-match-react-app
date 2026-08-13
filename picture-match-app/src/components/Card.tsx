@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Card.css"
 
 // определение типа парметров для компонента
@@ -10,6 +11,12 @@ type CardProps = {
 // функция компонента с принимаемым параметром props
 
 function Card(props: CardProps) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleClick() {
+        setIsOpen(previous => !previous);
+    };
+
     return (
         <div
             className="card"
@@ -17,8 +24,10 @@ function Card(props: CardProps) {
                 width: props.size,
                 height: props.size,
             }}
+
+            onClick={handleClick}
         >
-            {props.image}
+            {isOpen ? props.image : "?"}
         </div>
     )
 }
