@@ -1,6 +1,6 @@
 import "./Board.css"
 import {type Card} from "../models/Card";
-import CardComponent from "./Card";
+import CardComponent from "./CardComponent";
 
 
 type BoardProps = {

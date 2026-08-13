@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Card.css"
+import "./CardComponent.css"
 
 // определение типа парметров для компонента
 
@@ -10,7 +10,7 @@ type CardProps = {
 
 // функция компонента с принимаемым параметром props
 
-function Card(props: CardProps) {
+function CardComponent(props: CardProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     function handleClick() {
@@ -32,4 +32,4 @@ function Card(props: CardProps) {
     )
 }
 
-export default Card;
+export default CardComponent;
