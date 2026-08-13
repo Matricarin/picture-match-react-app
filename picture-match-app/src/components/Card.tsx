@@ -13,7 +13,7 @@ function Card(props: CardProps) {
     return (
         <div
             className="card"
-            style={{``
+            style={{
                 width: props.size,
                 height: props.size,
             }}
