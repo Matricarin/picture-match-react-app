@@ -19,7 +19,7 @@ function Card(props: CardProps) {
 
     return (
         <div
-            className="card"
+            className={isOpen ? "card open" : "card"}
             style={{
                 width: props.size,
                 height: props.size,

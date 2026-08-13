@@ -14,3 +14,7 @@
 
     font-size: 32px;
 }
+
+.card.open{
+    background: darkgrey;
+}
