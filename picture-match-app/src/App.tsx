@@ -10,10 +10,10 @@ function App() {
 
       <div className='board'>
 
-        <Card image="😺" size={100} />
-        <Card image="🐶" size={100}/>
+        <Card image="🐰" size={100} />
+        <Card image="🦁" size={100}/>
         <Card image="🐸" size={100}/>
-        <Card image="🐻" size={100}/>
+        <Card image="🐵" size={100}/>
 
       </div>
     </div>
