@@ -1,8 +1,15 @@
 import './App.css'
 
-function App(){
+function App() {
+  const title = "Picture Match!";
+  const size = 10;
+
+
   return (
-    <h1>Picture Match!</h1>
+    <div>
+      <h1>{title}</h1>
+      <p>Board size: {size} x {size}</p>
+    </div>
   );
 }
 
