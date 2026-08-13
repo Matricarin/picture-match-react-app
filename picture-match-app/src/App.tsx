@@ -3,8 +3,6 @@ import Card from "./components/Card";
 
 function App() {
   const title = "Picture Match!";
-  const size = 10;
-
 
   return (
     <div>
@@ -12,11 +10,11 @@ function App() {
 
       <div className='board'>
 
-        <Card image="😺" />
-        <Card image="🐶" />
-        <Card image="🐸" />
-        <Card image="🐻" />
-        
+        <Card image="😺" size={100} />
+        <Card image="🐶" size={100}/>
+        <Card image="🐸" size={100}/>
+        <Card image="🐻" size={100}/>
+
       </div>
     </div>
   );

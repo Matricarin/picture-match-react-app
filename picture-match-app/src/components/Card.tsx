@@ -4,14 +4,21 @@ import "./Card.css"
 
 type CardProps = {
     image: string;
+    size: number
 };
 
 // функция компонента с принимаемым параметром props
 
-function Card({image}: CardProps){
-    return(
-        <div className="сard">
-            {image}
+function Card(props: CardProps) {
+    return (
+        <div
+            className="card"
+            style={{``
+                width: props.size,
+                height: props.size,
+            }}
+        >
+            {props.image}
         </div>
     )
 }

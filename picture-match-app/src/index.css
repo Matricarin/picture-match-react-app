@@ -112,6 +112,6 @@ code {
 
 .board{
   display: grid;
-  grid-template-columns: repeat(2, 80px);
+  grid-template-columns: repeat(2, 100px);
   gap: 10px;
 }
