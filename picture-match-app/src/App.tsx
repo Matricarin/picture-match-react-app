@@ -1,6 +1,6 @@
 import './App.css'
 import {type Card} from "./models/Card";
-import Board from "./components/Board";
+import BoardComponent from "./components/BoardComponent";
 
 function App() {
   const title = "Picture Match!";
@@ -58,7 +58,7 @@ function App() {
   return (
     <div>
       <h1>{title}</h1>
-      <Board cards={cards} />
+      <BoardComponent cards={cards} />
     </div>
   );
 }
