@@ -1,3 +1,4 @@
+import "./Board.css"
 import Card from "./Card";
 
 type CardData = {
@@ -8,6 +9,8 @@ type CardData = {
 type BoardProps = {
     cards: CardData[];
 };
+
+// key нужен для идентификации компонента DOM
 
 function Board(props: BoardProps) {
     return (
