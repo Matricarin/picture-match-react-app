@@ -1,41 +1,57 @@
 import './App.css'
-import Card from "./components/Card";
+import {type Card} from "./models/Card";
 import Board from "./components/Board";
 
 function App() {
   const title = "Picture Match!";
-  const cards = [
+  const cards: Card[] = [
     {
       id: 1,
-      image: "🐰"
+      image: "🐰",
+      isOpen: false,
+      isMatched: false
     },
     {
       id: 2,
-      image: "🦁"
+      image: "🦁",
+      isOpen: false,
+      isMatched: false
     },
     {
       id: 3,
-      image: "🐸"
+      image: "🐸",
+      isOpen: false,
+      isMatched: false
     },
     {
       id: 4,
-      image: "🐵"
+      image: "🐵",
+      isOpen: false,
+      isMatched: false
     },
     {
       id: 5,
-      image: "😺"
+      image: "😺",
+      isOpen: false,
+      isMatched: false
     },
     {
       id: 6,
-      image: "🐶"
+      image: "🐶",
+      isOpen: false,
+      isMatched: false
     },
     {
       id: 7,
-      image: "🐮"
+      image: "🐮",
+      isOpen: false,
+      isMatched: false
     },
     {
       id: 8,
-      image: "🐼"
+      image: "🐼",
+      isOpen: false,
+      isMatched: false
     },
   ]
 

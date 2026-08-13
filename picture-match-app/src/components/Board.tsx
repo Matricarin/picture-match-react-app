@@ -1,13 +1,10 @@
 import "./Board.css"
-import Card from "./Card";
+import {type Card} from "../models/Card";
+import CardComponent from "./Card";
 
-type CardData = {
-    id: number,
-    image: string;
-};
 
 type BoardProps = {
-    cards: CardData[];
+    cards: Card[];
 };
 
 // key нужен для идентификации компонента DOM
@@ -17,7 +14,7 @@ function Board(props: BoardProps) {
         <div className="board">
             {
                 props.cards.map(card => (
-                    <Card key={card.id}
+                    <CardComponent key={card.id}
                         image={card.image}
                         size={100} />
                 ))
