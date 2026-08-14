@@ -113,9 +113,3 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
-
-.board {
-  display: grid;
-  grid-template-columns: repeat(2, 100px);
-  gap: 10px;
-}

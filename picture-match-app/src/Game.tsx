@@ -69,27 +69,28 @@ function Game() {
         setSelectedCardsIds([]);
         return;
       }
+      else{
+        const timeoutId = setTimeout(() =>{
+          setCards(previous => 
+            previous.map(card => 
+              card.id === first.id || 
+              card.id === second.id
+              ? {
+                ...card,
+                isOpen: false,
+              }
+              : card
+            )
+          );
 
-      const timeoutId = setTimeout(() =>{
-        setCards(previous => 
-          previous.map(card => 
-            card.id === first.id || 
-            card.id === second.id
-            ? {
-              ...card,
-              isOpen: false,
-            }
-            : card
-          )
-        );
+          setSelectedCardsIds([]);
+        }, 1000);
 
-        setSelectedCardsIds([]);
-      }, 1000);
-
-      return () => {
-        clearTimeout(timeoutId)
+        return () => {
+          clearTimeout(timeoutId)
       };
 
+      }     
     }, [setSelectedCardsIds])
   };
 

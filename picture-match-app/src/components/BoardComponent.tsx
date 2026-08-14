@@ -16,7 +16,7 @@ function BoardComponent(props: BoardProps) {
                 props.cards.map(card => (
                     <CardComponent key={card.id}
                         image={card.image}
-                        size={100}
+                        size={50}
                         isOpen={card.isOpen}
                         onClick={() => props.onCardClick(card.id)}
                         isMatched={card.isMatched} />
