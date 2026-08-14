@@ -1,5 +1,5 @@
 import "./BoardComponent.css"
-import {type Card} from "../models/Card";
+import { type Card } from "../models/Card";
 import CardComponent from "./CardComponent";
 
 type BoardProps = {
@@ -17,8 +17,8 @@ function BoardComponent(props: BoardProps) {
                     <CardComponent key={card.id}
                         image={card.image}
                         size={100}
-                        isOpen={card.isOpen} 
-                        onClick={() => props.onCardClick(card.id)}/>
+                        isOpen={card.isOpen}
+                        onClick={() => props.onCardClick(card.id)} />
                 ))
             }
         </div>

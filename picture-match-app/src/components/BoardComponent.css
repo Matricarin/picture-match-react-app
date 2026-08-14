@@ -1,4 +1,4 @@
-.board{
+.board {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     gap: 10px;
