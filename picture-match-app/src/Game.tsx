@@ -20,7 +20,7 @@ function Game() {
       return;
     }
 
-    const card = cards.find(card => card.id == cardId);
+    const card = cards.find(card => card.id === cardId);
 
     if (!card || card.isOpen || card.isMatched) {
       return;
@@ -38,60 +38,60 @@ function Game() {
       ...previous,
       card
     ]);
-
-    useEffect(() => {
-      if (selectedCards.length !== 2) {
-        return;
-      }
-
-      const [first, second] = selectedCards;
-
-      if (!first || !second) {
-        return;
-      }
-
-      const isMatch = first.image === second.image;
-
-      if (isMatch) {
-        setCards(previous =>
-          previous.map(card =>
-            card.id === first.id ||
-              card.id === second.id
-              ? {
-                ...card,
-                isMatched: true,
-              }
-              : card
-          )
-        );
-
-        setSelectedCards([]);
-        return;
-      }
-
-      const timeoutId = setTimeout(() => {
-        setCards(previousCards =>
-          previousCards.map(card =>
-            card.id === first.id ||
-              card.id === second.id
-              ? {
-                ...card,
-                isOpen: false,
-              }
-              : card
-          )
-        );
-
-        setSelectedCards([]);
-      }, 1000);
-
-      return () => {
-        clearTimeout(timeoutId);
-      };
-
-
-    }, [setSelectedCards])
   };
+
+  useEffect(() => {
+    if (selectedCards.length !== 2) {
+      return;
+    }
+
+    const [first, second] = selectedCards;
+
+    if (!first || !second) {
+      return;
+    }
+
+    const isMatch = first.image === second.image;
+
+    if (isMatch) {
+      setCards(previous =>
+        previous.map(card =>
+          card.id === first.id ||
+            card.id === second.id
+            ? {
+              ...card,
+              isMatched: true,
+            }
+            : card
+        )
+      );
+
+      setSelectedCards([]);
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      setCards(previousCards =>
+        previousCards.map(card =>
+          card.id === first.id ||
+            card.id === second.id
+            ? {
+              ...card,
+              isOpen: false,
+            }
+            : card
+        )
+      );
+
+      setSelectedCards([]);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+
+
+  }, [setSelectedCards])
 
   return (
     <div className="game">
