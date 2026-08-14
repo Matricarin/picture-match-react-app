@@ -5,7 +5,8 @@ import "./CardComponent.css"
 type CardProps = {
     image: string;
     size: number,
-    isOpen: boolean
+    isOpen: boolean,
+    onClick: () => void
 };
 
 // функция компонента с принимаемым параметром props
@@ -19,6 +20,7 @@ function CardComponent(props: CardProps) {
                 width: props.size,
                 height: props.size,
             }}
+            onClick={props.onClick}
         >
             {props.isOpen ? props.image : "?"}
         </div>

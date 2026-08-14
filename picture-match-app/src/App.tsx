@@ -6,8 +6,11 @@ function App() {
 
   return (
     <div>
+
       <h1>{title}</h1>
+
       <Game />
+      
     </div>
   );
 }
