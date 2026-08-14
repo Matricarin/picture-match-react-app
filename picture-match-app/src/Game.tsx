@@ -6,12 +6,17 @@ import { createDeck, images } from "./game/Deck";
 function Game() {
   const [cards, setCards] = useState<Card[]>(() => createDeck(images));
 
-  const [selectedCardsIds, setSelectedCardsIds] = useState<number[]>([]);
+  const [selectedCards, setSelectedCards] = useState<Card[]>([]);
+
+  function newGame() {
+    setCards(createDeck(images));
+    setSelectedCards([]);
+  }
 
   function handleCardClick(cardId: number) {
     console.log("Clicked card:", cardId);
 
-    if (selectedCardsIds.length >= 2) {
+    if (selectedCards.length >= 2) {
       return;
     }
 
@@ -29,23 +34,17 @@ function Game() {
       )
     );
 
-    setSelectedCardsIds(previous => [
+    setSelectedCards(previous => [
       ...previous,
-      cardId
+      card
     ]);
 
     useEffect(() => {
-      if (selectedCardsIds.length !== 2) {
+      if (selectedCards.length !== 2) {
         return;
       }
 
-      const first = cards.find(
-        card => card.id === selectedCardsIds[0]
-      );
-
-      const second = cards.find(
-        card => card.id === selectedCardsIds[1]
-      );
+      const [first, second] = selectedCards;
 
       if (!first || !second) {
         return;
@@ -66,37 +65,50 @@ function Game() {
           )
         );
 
-        setSelectedCardsIds([]);
+        setSelectedCards([]);
         return;
       }
-      else{
-        const timeoutId = setTimeout(() =>{
-          setCards(previous => 
-            previous.map(card => 
-              card.id === first.id || 
+
+      const timeoutId = setTimeout(() => {
+        setCards(previousCards =>
+          previousCards.map(card =>
+            card.id === first.id ||
               card.id === second.id
               ? {
                 ...card,
                 isOpen: false,
               }
               : card
-            )
-          );
+          )
+        );
 
-          setSelectedCardsIds([]);
-        }, 1000);
+        setSelectedCards([]);
+      }, 1000);
 
-        return () => {
-          clearTimeout(timeoutId)
+      return () => {
+        clearTimeout(timeoutId);
       };
 
-      }     
-    }, [setSelectedCardsIds])
+
+    }, [setSelectedCards])
   };
 
   return (
-    <BoardComponent cards={cards}
-      onCardClick={handleCardClick} />
+    <div className="game">
+
+      <BoardComponent cards={cards}
+        onCardClick={handleCardClick} />
+
+      <button onClick={newGame}
+        style={{
+          width: 100,
+          height: 50,
+          margin: 25
+        }}>
+        New Game
+      </button>
+    </div>
+
   );
 };
 
