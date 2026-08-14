@@ -6,6 +6,7 @@ type CardProps = {
     image: string;
     size: number,
     isOpen: boolean,
+    isMatched: boolean
     onClick: () => void
 };
 
@@ -18,7 +19,7 @@ function CardComponent(props: CardProps) {
     }
     return (
         <div
-            className={props.isOpen ? "card open" : "card"}
+            className={props.isMatched ? "card matched": props.isOpen ? "card open" : "card"}
             style={{
                 width: props.size,
                 height: props.size,

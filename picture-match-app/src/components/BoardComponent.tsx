@@ -18,7 +18,8 @@ function BoardComponent(props: BoardProps) {
                         image={card.image}
                         size={100}
                         isOpen={card.isOpen}
-                        onClick={() => props.onCardClick(card.id)} />
+                        onClick={() => props.onCardClick(card.id)}
+                        isMatched={card.isMatched} />
                 ))
             }
         </div>
