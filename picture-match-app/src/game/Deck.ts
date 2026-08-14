@@ -1,6 +1,6 @@
 import { type Card } from "../models/Card";
 
-const images = [
+export const images = [
     "😺", "🐶", "🐸", "🐻", "🦊",
     "🐼", "🐨", "🐯", "🦁", "🐮",
     "🐷", "🐵", "🐔", "🐧", "🐦",
