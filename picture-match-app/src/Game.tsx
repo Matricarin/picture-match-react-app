@@ -58,6 +58,14 @@ function Game() {
 
   function handleCardClick(cardId: number) {
     console.log("Clicked card:", cardId);
+    
+    setCards(previous => 
+      previous.map(card =>
+        card.id == cardId
+        ? {...card, isOpen: true}
+        : card
+      )
+    )
   };
 
   return (

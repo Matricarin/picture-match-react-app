@@ -13,6 +13,9 @@ type CardProps = {
 
 function CardComponent(props: CardProps) {
 
+    function dontRepeat(){
+        console.log("Repeated callback");
+    }
     return (
         <div
             className={props.isOpen ? "card open" : "card"}
@@ -20,7 +23,7 @@ function CardComponent(props: CardProps) {
                 width: props.size,
                 height: props.size,
             }}
-            onClick={props.onClick}
+            onClick={props.isOpen ? dontRepeat : props.onClick}
         >
             {props.isOpen ? props.image : "?"}
         </div>
