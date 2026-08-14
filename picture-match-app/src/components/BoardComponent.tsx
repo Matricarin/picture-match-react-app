@@ -7,8 +7,6 @@ type BoardProps = {
     onCardClick: (cardId: number) => void
 };
 
-// key нужен для идентификации компонента DOM
-
 function BoardComponent(props: BoardProps) {
     return (
         <div className="board">

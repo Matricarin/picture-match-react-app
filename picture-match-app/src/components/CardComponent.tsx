@@ -1,6 +1,5 @@
 import "./CardComponent.css"
 
-// определение типа парметров для компонента
 
 type CardProps = {
     image: string;
@@ -9,8 +8,6 @@ type CardProps = {
     isMatched: boolean
     onClick: () => void
 };
-
-// функция компонента с принимаемым параметром props
 
 function CardComponent(props: CardProps) {
 
