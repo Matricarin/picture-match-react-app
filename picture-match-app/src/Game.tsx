@@ -8,16 +8,20 @@ function Game() {
 
   const [selectedCards, setSelectedCards] = useState<Card[]>([]);
 
+  const isGameOver =
+    cards.length > 0 &&
+    cards.every(card => card.isMatched);
+
   function newGame() {
     setCards(createDeck(images));
     setSelectedCards([]);
   }
 
   function handleCardClick(cardId: number) {
-    
-    if (selectedCards.length >= 2){
+
+    if (selectedCards.length >= 2) {
       return;
-    } 
+    }
 
     const card = cards.find(c => c.id === cardId);
 
@@ -51,7 +55,7 @@ function Game() {
 
         setSelectedCards([]);
       } else {
-        
+
         setTimeout(() => {
 
           setCards(prev => prev.map(c =>
@@ -68,6 +72,22 @@ function Game() {
 
   return (
     <div className="game">
+
+      {isGameOver && (
+        <div className="game-over">
+          <h2>
+            Congratulations!
+          </h2>
+          <button onClick={newGame}
+            style={{
+              width: 100,
+              height: 50,
+              margin: 25
+            }}>
+            Start new game
+          </button>
+        </div>
+      )}
 
       <BoardComponent cards={cards}
         onCardClick={handleCardClick} />
