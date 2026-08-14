@@ -14,84 +14,57 @@ function Game() {
   }
 
   function handleCardClick(cardId: number) {
-    console.log("Clicked card:", cardId);
-
-    if (selectedCards.length >= 2) {
+    
+    if (selectedCards.length >= 2){
       return;
-    }
+    } 
 
-    const card = cards.find(card => card.id === cardId);
+    const card = cards.find(c => c.id === cardId);
 
     if (!card || card.isOpen || card.isMatched) {
       return;
-    };
+    }
 
-    setCards(previous =>
-      previous.map(card =>
-        card.id == cardId
-          ? { ...card, isOpen: true }
-          : card
-      )
+    if (selectedCards.some(c => c.id === cardId)) {
+      return;
+    }
+
+    const updatedCards = cards.map(c =>
+      c.id === cardId ? { ...c, isOpen: true } : c
     );
 
-    setSelectedCards(previous => [
-      ...previous,
-      card
-    ]);
-  };
+    setCards(updatedCards);
 
-  useEffect(() => {
-    if (selectedCards.length !== 2) {
-      return;
+    const newSelected = [...selectedCards, card];
+
+    setSelectedCards(newSelected);
+
+    if (newSelected.length === 2) {
+      const [first, second] = newSelected;
+
+      if (first.image === second.image) {
+        setCards(updatedCards.map(c =>
+          c.id === first.id || c.id === second.id
+            ? { ...c, isMatched: true }
+            : c
+        ));
+
+        setSelectedCards([]);
+      } else {
+        
+        setTimeout(() => {
+
+          setCards(prev => prev.map(c =>
+            c.id === first.id || c.id === second.id
+              ? { ...c, isOpen: false }
+              : c
+          ));
+          setSelectedCards([]);
+        }, 1000);
+      }
     }
+  }
 
-    const [first, second] = selectedCards;
-
-    if (!first || !second) {
-      return;
-    }
-
-    const isMatch = first.image === second.image;
-
-    if (isMatch) {
-      setCards(previous =>
-        previous.map(card =>
-          card.id === first.id ||
-            card.id === second.id
-            ? {
-              ...card,
-              isMatched: true,
-            }
-            : card
-        )
-      );
-
-      setSelectedCards([]);
-      return;
-    }
-
-    const timeoutId = setTimeout(() => {
-      setCards(previousCards =>
-        previousCards.map(card =>
-          card.id === first.id ||
-            card.id === second.id
-            ? {
-              ...card,
-              isOpen: false,
-            }
-            : card
-        )
-      );
-
-      setSelectedCards([]);
-    }, 1000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-
-
-  }, [setSelectedCards])
 
   return (
     <div className="game">
