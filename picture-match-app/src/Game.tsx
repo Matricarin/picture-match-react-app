@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import BoardComponent from "./components/BoardComponent";
 import { type Card } from "./models/Card";
-import { createDeck } from "./game/Deck";
+import { createDeck, images } from "./game/Deck";
 
 function Game() {
-  const [cards, setCards] = useState<Card[]>(() => createDeck());
+  const [cards, setCards] = useState<Card[]>(() => createDeck(images));
 
   const [selectedCardsIds, setSelectedCardsIds] = useState<number[]>([]);
 

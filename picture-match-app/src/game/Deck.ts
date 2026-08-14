@@ -13,7 +13,7 @@ export const images = [
     "⭐", "🌙", "☀️", "🔥", "❄️",
 ];
 
-export function createDeck() : Card[] {
+export function createDeck(images: string[]) : Card[] {
     const cards: Card[] = [];
 
     images.forEach((image, index) => {
