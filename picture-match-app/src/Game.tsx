@@ -92,14 +92,17 @@ function Game() {
       <BoardComponent cards={cards}
         onCardClick={handleCardClick} />
 
-      <button onClick={newGame}
-        style={{
-          width: 100,
-          height: 50,
-          margin: 25
-        }}>
-        New Game
-      </button>
+      {!isGameOver && (
+        <button onClick={newGame}
+          style={{
+            width: 100,
+            height: 50,
+            margin: 25
+          }}>
+          New Game
+        </button>
+      )}
+
     </div>
 
   );
